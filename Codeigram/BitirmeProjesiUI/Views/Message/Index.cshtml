@@ -1,0 +1,188 @@
+﻿@model List<ChatRoom>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/Tamplate/css/main.min.css">
+<link rel="stylesheet" href="~/Tamplate/css/style.css">
+<link rel="stylesheet" href="~/Tamplate/css/color.css">
+<link rel="stylesheet" href="~/Tamplate/css/responsive.css">
+
+<input type="hidden" name="userId" id="input" value="@ViewBag.userId" />
+
+<section>
+	<div class="gap gray-bg">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row" id="page-contents">
+						<div class="col-lg-3">
+							<aside class="sidebar static">
+								<div class="advertisment-box">
+									<h4 class="">advertisment</h4>
+								@*	<figure>
+										<a href="#" title="Advertisment"><img src="~/Tamplate/images/resources/ad-widget.jpg" alt=""></a>
+									</figure>*@
+								</div>
+								<div class="widget stick-widget">
+									<h4 class="widget-title">Shortcuts</h4>
+									<ul class="naves">
+										<li>
+											<i class="ti-clipboard"></i>
+											<a href="newsfeed.html" title="">News feed</a>
+										</li>
+										<li>
+											<i class="ti-mouse-alt"></i>
+											<a href="inbox.html" title="">Inbox</a>
+										</li>
+										<li>
+											<i class="ti-files"></i>
+											<a href="fav-page.html" title="">My pages</a>
+										</li>
+										<li>
+											<i class="ti-user"></i>
+											<a href="timeline-friends.html" title="">friends</a>
+										</li>
+										<li>
+											<i class="ti-image"></i>
+											<a href="timeline-photos.html" title="">~/Tamplate/images</a>
+										</li>
+										<li>
+											<i class="ti-video-camera"></i>
+											<a href="timeline-videos.html" title="">videos</a>
+										</li>
+
+									</ul>
+								</div><!-- Shortcuts -->
+							</aside>
+						</div><!-- sidebar -->
+						<div class="col-lg-9">
+							<div class="central-meta">
+								<div class="messages">
+									<h5 class="f-title"><i class="ti-bell"></i>All Messages <span class="more-options"><i class="fa fa-ellipsis-h"></i></span></h5>
+									<div class="message-box">
+										<ul class="peoples">
+											@foreach (var item in Model)
+											{
+												<li id="@item.Id" class="person">
+													<figure>
+														<img class="profile-image" src="~/PP/@item.PP" alt="">
+														<span class="status f-online"></span>
+													</figure>
+													<div class="people-name">
+														<span style="font-size:15px" class="text-primary username">@item.Username</span>
+														<span style="display:none" class="text-primary userId">@item.UserToken</span>
+														<span style="display:none" class="text-primary toId">@item.ToToken</span>
+														<br>
+														<span>~ @item.LastMessage</span>
+													</div>
+												</li>
+											}
+										</ul>
+
+										<div class="peoples-mesg-box" id="chatBox">
+											<!-- Sohbet içeriği buraya eklenecek -->
+										</div>
+
+										<div class="message-text-container">
+											
+										</div>
+										<form method="post">
+											<textarea id="messageInput"></textarea>
+											<button title="send" type="button" onclick="sendMessage()"><i class="fa fa-paper-plane"></i></button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div><!-- centerl meta -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<script src="~/Tamplate/js/main.min.js"></script>
+<script src="~/Tamplate/js/script.js"></script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var connection = new signalR.HubConnectionBuilder()
+            .withUrl('/sohbetHub')
+            .build();
+
+        connection.start().then(function () {
+            console.log('SignalR Bağlantısı Kuruldu!');
+        }).catch(function (err) {
+            console.error(err.toString());
+        });
+
+        var peopleList = document.querySelectorAll('.person');
+        var chatContent = document.getElementById('chatBox');
+        var messageInput = document.getElementById('messageInput');
+      
+
+      
+
+        connection.on('ReceiveMessage', function (personId, userId, message) {
+            if (personId === activePersonId) {
+                updateChatBox(personId, userId);
+            }
+        });
+
+		peopleList.forEach(function (person) {
+			person.addEventListener('click', function () {
+				var personId = this.id;
+				activePersonId = this.id;
+				var imgSrc = this.querySelector('.profile-image').src;
+				var username = this.querySelector('.username').textContent;
+				var userId = this.querySelector('.userId').textContent;
+				var toId = this.querySelector('.toId').textContent;
+
+				if (userId == document.getElementById("input").value) {
+					showChatBox(personId, imgSrc, username, userId);
+					userToken = userId;
+					toToken = toId;
+				} else {
+					showChatBox(personId, imgSrc, username, toId);
+					toToken = userId;
+					userToken = toId;
+				}
+
+				// Clear previous intervals
+				clearInterval(chatUpdateInterval);
+
+				// Set up a new interval to update the chat box every second
+				chatUpdateInterval = setInterval(function () {
+					updateChatBox(personId, userToken, imgSrc);
+				}, 1000);
+			});
+		});
+
+		var chatUpdateInterval;
+
+		function showChatBox(personId, imgSrc, username, userId) {
+            activePersonId = personId;
+
+            chatContent.innerHTML = `
+                <div class="conversation-head">
+                    <figure></figure>
+                    <img width="60" height="40" style="border-radius: 100%" src="${imgSrc}" alt="">
+                    <span>${username} <i>online</i></span>
+                </div>
+                <ul class="chatting-area" id="chattingArea"></ul>
+            `;
+
+            updateChatBox(personId, userId, imgSrc);
+        }
+
+       
+    });
+
+
+</script>

@@ -1,0 +1,1147 @@
+﻿@using BitirmeProjesiUI.Identity;
+@model User
+
+<style>
+    .post-comt-box {
+        display: inline-block;
+        padding-left: 15px;
+        position: relative;
+        width: 100%;
+    }
+
+        .post-comt-box form textarea {
+            background: #f3f3f3 none repeat scroll 0 0;
+            border-color: transparent;
+            border-radius: 3px;
+            color: #000000;
+            font-size: 13.5px;
+            font-weight: 500;
+            height: 40px;
+            line-height: 16px;
+        }
+
+        .post-comt-box .add-smiles {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            line-height: 10px;
+        }
+
+            .post-comt-box .add-smiles > span {
+                font-size: 12px;
+                cursor: pointer;
+                margin-right: 70px;
+            }
+
+        .post-comt-box .add-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            line-height: 10px;
+            margin-top: 8px;
+            padding: 5px;
+        }
+
+            .post-comt-box .add-button > button {
+                background-color: red;
+                padding: 10px;
+            }
+
+    .smiles-bunch {
+        background: #eaeaea none repeat scroll 0 0;
+        border-radius: 5px;
+        top: -63px;
+        font-size: 13px;
+        padding: 5px;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        width: 150px;
+        display: none;
+    }
+
+        .smiles-bunch.active {
+            display: block;
+        }
+
+        .smiles-bunch > i {
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .smiles-bunch::before {
+            border-top: 7px solid #eaeaea;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            content: "";
+            position: absolute;
+            right: 11px;
+            bottom: -7px;
+            width: auto;
+        }
+
+        .smiles-bunch > i:hover {
+            transform: scale(1.1);
+        }
+
+    .post-comt-box form button {
+        bottom: 2px;
+        position: absolute;
+        right: 0;
+        background: none;
+    }
+
+</style>
+<input type="hidden" id="userId" value="@ViewBag.userId" />
+
+<section>
+    <div class="feature-photo">
+        @if (Model.ImageUrl == "arkaPlan.png")
+        {
+            <figure><img style="height:450px" src="~/Tamplate/images/arkaPlan.png" alt=""></figure>
+        }
+        else
+        {
+            <figure><img style="height:450px" src="~/Tamplate/images/@Model.ImageUrl" alt=""></figure>
+        }
+
+        <div class="add-btn">
+            <span>@ViewBag.countFollower followers</span>
+        </div>
+        @* <form class="edit-phto">
+        <i class="fa fa-camera-retro"></i>
+        <label class="fileContainer">
+        Edit Cover Photo
+        <input type="file" />
+        </label>
+        </form> *@
+        <div class="container-fluid">
+            <div class="row merged">
+                <div class="col-lg-2 col-sm-3">
+                    <div class="user-avatar">
+                        <figure>
+                            @if (Model.ProfilePhoto == "pp.jpg")
+                            {
+                                <img src="~/PP/pp.jpg" alt="">
+
+                            }
+                            else
+                            {
+                                <img src="~/PP/@Model.ProfilePhoto" alt="">
+
+                            }
+                            @* <form class="edit-phto">
+                            <i class="fa fa-camera-retro"></i>
+                            <label class="fileContainer">
+                            Edit Display Photo
+                            <input type="file" />
+                            </label>
+                            </form> *@
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-sm-9">
+                    <div class="timeline-info">
+                        <ul>
+                            <li class="admin-name">
+                                <h5> @Model.FirstName @Model.LastName  </h5>
+
+                            </li>
+                            <li>
+                                <a class="active" href="#" title="" data-ripple="">time line</a>
+                                @*                                 <a class="" href="#" title="" data-ripple="">Photos</a> *@
+                                <a class="" href="/Account/Friends" title="" data-ripple="">Friends</a>
+                                @* <a class="" href="#" title="" data-ripple="">Groups</a> *@
+                                @* <a class="" href="/Post/AddPost" title="" data-ripple="">Add Posts</a> *@
+                                @* <a class="" href="#" title="" data-ripple="">about</a> *@
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="gap gray-bg">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row" id="page-contents">
+                        <div class="col-lg-3">
+                            <aside class="sidebar static">
+                                <div class="widget">
+                                    <h4 class="widget-title">Shortcuts</h4>
+
+                                    <ul class="naves">
+                                        <li>
+                                            <i class="ti-clipboard"></i>
+                                            <a href="newsfeed.html" title="">News feed</a>
+                                        </li>
+                                        <li>
+                                            <i class="ti-files"></i>
+                                            <a href="/account/profilePage" title="">My pages</a>
+                                        </li>
+                                        <li>
+                                            <i class="ti-user"></i>
+                                            <a href="timeline-friends.html" title="">Friends</a>
+                                        </li>
+                                        <li>
+                                            <i class="ti-comments-smiley"></i>
+                                            <a href="messages.html" title="">Messages</a>
+                                        </li>
+                                        <li>
+                                            <i class="ti-power-off"></i>
+                                            <a href="landing.html" title="">Logout</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div class="advertisment-box">
+                                    <h4 class="">advertisment</h4>
+                                    <figure>
+                                        <a href="#" title="Advertisment"><img src="~/Tamplate/images/resources/ad-widget.jpg" alt=""></a>
+                                    </figure>
+                                </div>
+
+                                <div class="advertisment-box">
+                                    <h4 class="">advertisment</h4>
+                                    <figure>
+                                        <a href="#" title="Advertisment"><img src="~/Tamplate/images/resources/reklam1.jpg" alt=""></a>
+                                    </figure>
+                                </div>
+                                <!-- Shortcuts -->
+                                @* <div class="widget">
+                                <h4 class="widget-title">Recent Activity</h4>
+                                <ul class="activitiez">
+                                <li>
+                                <div class="activity-meta">
+                                <i>10 hours Ago</i>
+                                <span><a href="#" title="">Commented on Video posted </a></span>
+                                <h6>by <a href="time-line.html">black demon.</a></h6>
+                                </div>
+                                </li>
+                                <li>
+                                <div class="activity-meta">
+                                <i>30 Days Ago</i>
+                                <span><a href="#" title="">Posted your status. “Hello guys, how are you?”</a></span>
+                                </div>
+                                </li>
+                                <li>
+                                <div class="activity-meta">
+                                <i>2 Years Ago</i>
+                                <span><a href="#" title="">Share a video on her timeline.</a></span>
+                                <h6>"<a href="#">you are so funny mr.been.</a>"</h6>
+                                </div>
+                                </li>
+                                </ul>
+                                </div> *@
+                                <!-- recent activites -->
+                                <div class="widget stick-widget">
+
+                                    @* <h4 class="widget-title">Who's follownig</h4>
+                                    <ul class="followers">
+                                    <li>
+                                    <figure><img src="~/Tamplate/images/resources/friend-avatar2.jpg" alt=""></figure>
+                                    <div class="friend-meta">
+                                    <h4><a href="time-line.html" title="">Kelly Bill</a></h4>
+                                    <a href="#" title="" class="underline">Add Friend</a>
+                                    </div>
+                                    </li>
+                                    <li>
+                                    <figure><img src="~/Tamplate/images/resources/friend-avatar4.jpg" alt=""></figure>
+                                    <div class="friend-meta">
+                                    <h4><a href="time-line.html" title="">Issabel</a></h4>
+                                    <a href="#" title="" class="underline">Add Friend</a>
+                                    </div>
+                                    </li>
+                                    <li>
+                                    <figure><img src="~/Tamplate/images/resources/friend-avatar6.jpg" alt=""></figure>
+                                    <div class="friend-meta">
+                                    <h4><a href="time-line.html" title="">Andrew</a></h4>
+                                    <a href="#" title="" class="underline">Add Friend</a>
+                                    </div>
+                                    </li>
+                                    <li>
+                                    <figure><img src="~/Tamplate/images/resources/friend-avatar8.jpg" alt=""></figure>
+                                    <div class="friend-meta">
+                                    <h4><a href="time-line.html" title="">Sophia</a></h4>
+                                    <a href="#" title="" class="underline">Add Friend</a>
+                                    </div>
+                                    </li>
+                                    <li>
+                                    <figure><img src="~/Tamplate/images/resources/friend-avatar3.jpg" alt=""></figure>
+                                    <div class="friend-meta">
+                                    <h4><a href="time-line.html" title="">Allen</a></h4>
+                                    <a href="#" title="" class="underline">Add Friend</a>
+                                    </div>
+                                    </li>
+                                    </ul> *@
+
+                                </div><!-- who's following -->
+                            </aside>
+                        </div>
+                        <!-- sidebar -->
+                        <div class="col-lg-6">
+                            <div class="central-meta">
+                                <div class="new-postbox">
+                                    <figure>
+                                        <img style="border-radius:50%;width:100px;height:75px" src="/PP/@Model.ProfilePhoto" alt="">
+                                    </figure>
+
+                                    <div class="newpst-input">
+                                        <form id="postForm" method="post" asp-action="AddPost" asp-controller="Post" enctype="multipart/form-data">
+                                            <textarea name="Description" id="silinecek" rows="3" placeholder="write something"></textarea>
+                                            <div class="attachments">
+                                                <ul>
+                                                    <li>
+                                                        <i class="fa fa-music"></i>
+                                                        <label class="fileContainer">
+                                                            <input type="file">
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-image"></i>
+                                                        <label for="image" class="fileContainer">
+                                                            <input type="file" name="image" class="form-control" required="required" accept="image/*">
+                                                        </label><i class="mtrl-select"></i>
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-video-camera"></i>
+                                                        <label class="fileContainer">
+                                                            <input type="file">
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-camera"></i>
+                                                        <label class="fileContainer">
+                                                            <input type="file">
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <button type="button" id="publishButton">Publish</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- add post new box -->
+                            <div class="loadMore" id="postsContainer">
+                            </div>
+                        </div>
+                        <!-- centerl meta -->
+                        <div class="col-lg-3">
+                            <aside class="sidebar static">
+
+                                @*
+                                <div class="widget">
+                                <h4 class="widget-title">Invite friends</h4>
+                                <ul class="invition">
+                                <li>
+                                <figure><img src="~/Tamplate/images/resources/friend-avatar8.jpg" alt=""></figure>
+                                <div class="friend-meta">
+                                <h4><a href="time-line.html" class="underline" title="">Sophia hayat</a></h4>
+                                <a href="#" title="" class="invite" data-ripple="">invite</a>
+                                </div>
+                                </li>
+                                <li>
+                                <figure><img src="~/Tamplate/images/resources/friend-avatar4.jpg" alt=""></figure>
+                                <div class="friend-meta">
+                                <h4><a href="time-line.html" class="underline" title="">Issabel kaif</a></h4>
+                                <a href="#" title="" class="invite" data-ripple="">invite</a>
+                                </div>
+                                </li>
+                                <li>
+                                <figure><img src="~/Tamplate/images/resources/friend-avatar2.jpg" alt=""></figure>
+                                <div class="friend-meta">
+                                <h4><a href="time-line.html" class="underline" title="">Kelly Bill</a></h4>
+                                <a href="#" title="" class="invite" data-ripple="">invite</a>
+                                </div>
+                                </li>
+                                <li>
+                                <figure><img src="~/Tamplate/images/resources/friend-avatar3.jpg" alt=""></figure>
+                                <div class="friend-meta">
+                                <h4><a href="time-line.html" class="underline" title="">Allen jhon</a></h4>
+                                <a href="#" title="" class="invite" data-ripple="">invite</a>
+                                </div>
+                                </li>
+                                <li>
+                                <figure><img src="~/Tamplate/images/resources/friend-avatar6.jpg" alt=""></figure>
+                                <div class="friend-meta">
+                                <h4><a href="time-line.html" class="underline" title="">tom Andrew</a></h4>
+                                <a href="#" title="" class="invite" data-ripple="">invite</a>
+                                </div>
+                                </li>
+
+                                <li>
+                                <figure><img src="~/Tamplate/images/resources/friend-avatar3.jpg" alt=""></figure>
+                                <div class="friend-meta">
+                                <h4><a href="time-line.html" title="" class="underline">Allen doe</a></h4>
+                                <a href="#" title="" class="invite" data-ripple="">invite</a>
+                                </div>
+                                </li>
+                                </ul>
+                                </div> *@
+
+                                <!-- invite for page  -->
+                                <div class="widget friend-list stick-widget">
+                                    <h4 class="widget-title">Friends</h4>
+                                    <div id="searchDir"></div>
+                                    <ul id="people-list" class="friendz-list">
+                                        @foreach (var follow in ViewBag.Follows)
+                                        {
+                                            <li>
+                                                <figure>
+                                                    <img src="~/PP/@follow.Pp" alt="">
+                                                    <span class="status f-online"></span>
+                                                </figure>
+                                                <div class="friendz-meta">
+                                                    <a href="time-line.html">@follow.UserName</a>
+                                                </div>
+                                            </li>
+                                        }
+
+                                    </ul>
+
+                                    <div class="chat-box">
+                                        <div class="chat-head">
+                                            <span class="status f-online"></span>
+                                            <h6>Bucky Barnes</h6>
+                                            <div class="more">
+                                                <span><i class="ti-more-alt"></i></span>
+                                                <span class="close-mesage"><i class="ti-close"></i></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="chat-list">
+                                            <ul>
+                                                <li class="me">
+                                                    <div class="chat-thumb"><img src="~/Tamplate/images/resources/chatlist1.jpg" alt=""></div>
+                                                    <div class="notification-event">
+                                                        <span class="chat-message-item">
+                                                            Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
+                                                        </span>
+                                                        <span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
+                                                    </div>
+                                                </li>
+                                                <li class="you">
+                                                    <div class="chat-thumb"><img src="~/Tamplate/images/resources/chatlist2.jpg" alt=""></div>
+                                                    <div class="notification-event">
+                                                        <span class="chat-message-item">
+                                                            Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
+                                                        </span>
+                                                        <span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
+                                                    </div>
+                                                </li>
+                                                <li class="me">
+                                                    <div class="chat-thumb"><img src="~/Tamplate/images/resources/chatlist1.jpg" alt=""></div>
+                                                    <div class="notification-event">
+                                                        <span class="chat-message-item">
+                                                            Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
+                                                        </span>
+                                                        <span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <form class="text-box">
+                                                <textarea placeholder="Post enter to post..."></textarea>
+                                                <div class="add-smiles">
+                                                    <span title="add icon" class="em em-expressionless"></span>
+                                                </div>
+                                                <div class="smiles-bunch">
+                                                    <i class="em em---1"></i>
+                                                    <i class="em em-smiley"></i>
+                                                    <i class="em em-anguished"></i>
+                                                    <i class="em em-laughing"></i>
+                                                    <i class="em em-angry"></i>
+                                                    <i class="em em-astonished"></i>
+                                                    <i class="em em-blush"></i>
+                                                    <i class="em em-disappointed"></i>
+                                                    <i class="em em-worried"></i>
+                                                    <i class="em em-kissing_heart"></i>
+                                                    <i class="em em-rage"></i>
+                                                    <i class="em em-stuck_out_tongue"></i>
+                                                </div>
+                                                <button type="submit"></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div><!-- friends list sidebar -->
+
+                            </aside>
+                        </div><!-- sidebar -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.9.0/alertify.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+
+        // Gönderileri almak için AJAX çağrısını yap
+        $.ajax({
+            type: "GET",
+            url: "/Post/GetPost",
+            success: function (posts) {
+
+                // Gönderileri sayfada görüntülemek için bir fonksiyonu çağır
+                console.log(posts)
+                renderPosts(posts);
+            },
+            error: function (error) {
+                console.log("Gönderiler alınırken hata oluştu");
+            }
+        });
+
+        // Yorumlar ve alt yorumlar için ek AJAX çağrıları buraya eklenmeli
+    });
+
+
+    function renderPosts(posts) {
+        posts.forEach(function (post) {
+            // Gönderi konteynırını oluştur
+
+
+            $.ajax({
+                type: "GET",
+                url: "/command/getLikes",
+                success: function (response) {
+                    // Kullanıcının beğendiği post ID'lerini içeren bir dizi oluştur
+                    var likedPostIds = response.map(function (like) {
+                        return like.postId;
+                    });
+
+                    var postContainer = $('<div class="central-meta item"></div>');
+
+                    // Gönderiyi HTML olarak oluştur
+                    var postHtml =
+                        '<div class="user-post">' +
+
+                        '<div class="friend-info">' +
+
+                        '<figure>' +
+                        '<img style="border-radius:50%;width:75px;height:50px"  src="/PP/' + post.pp + '" alt="">' +
+                        '</figure>' +
+
+                        '<div class="friend-name">' +
+                        '<ins><a href="time-line.html" title="">' + post.userName + '</a></ins>' +
+                        '<span>' + post.created_at + '</span>' +
+                        '</div>' +
+
+                        '<div class="post-meta">' +
+                        '<img   src="/PostImg/' + post.imageUrl + '" alt="">' +
+                        '<div class="we-video-info">' +
+
+                        '<ul>' +
+
+                        '<li>' +
+                        '<span class="views" data-toggle="tooltip" title="Görüntüleme">' +
+                        '<i class="fa fa-eye"></i>' +
+                        '<ins>' + post.countSeen + '</ins>' +
+                        '</span>' +
+                        '</li>' +
+
+                        '<li>' +
+                        '<span class="comment" data-toggle="tooltip" title="Yorumlar">' +
+                        '<i class="fa fa-comments"></i>' +
+                        '<ins>' + post.countComment + '</ins>' +
+                        '</span>' +
+                        '</li>' +
+
+                        '<li>' +
+                        '<span id="span' + post.id + '" class="like" onclick="begenmeIslemi(' + post.id + ')" data-toggle="tooltip" title="Beğeni">' +
+                        '<i style="color:' + (likedPostIds.includes(post.id) ? 'red' : 'black') + '" class="fa fa-heart"></i>' +
+                        '<ins>' + post.countLike + '</ins>' +
+                        '</span>' +
+                        '</li>' +
+
+                        '<li >' +
+                        '<span class="dislike" data-toggle="tooltip" title="Beğenmeme">' +
+                        '<i class="ti-heart-broken"></i>' +
+                        '<ins>' + post.countDislike + '</ins>' +
+                        '</span>' +
+                        '</li>' +
+
+                        // '<li class="social-media">' +
+
+                        // '<div class="menu">' +
+
+                        // '<div class="btn trigger"><i class="fa fa-share-alt"></i></div>' +
+
+                        // '<div class="rotater">' +
+                        // '<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-html5"></i></a></div>' +
+                        // '</div>' +
+
+                        // '<div class="rotater">' +
+                        // '<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-facebook"></i></a></div>' +
+                        // '</div>' +
+
+                        // '<div class="rotater">' +
+                        // '<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-google-plus"></i></a></div>' +
+                        // '</div>' +
+
+                        // '<div class="rotater">' +
+                        // '<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-twitter"></i></a></div>' +
+                        // '</div>' +
+
+                        // '<div class="rotater">' +
+                        // '<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-css3"></i></a></div>' +
+                        // '</div>' +
+
+                        // '<div class="rotater">' +
+                        // '<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-instagram"></i></a></div>'+
+                        // '</div>' +
+
+                        // '</div>' +
+
+                        // '<div class="rotater">' +
+                        // '<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-dribbble"></i></a></div>'+
+                        // '</div>' +
+
+                        // '<div class="rotater">' +
+                        // '<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-pinterest"></i></a></div>' +
+                        // '</div>' +
+
+                        // '</div>' +
+
+                        // '</li>' +
+
+                        '</ul>' +
+                        '</div>' +
+
+                        '<div class="description">' +
+                        '<p>' + post.description + '</p>' +
+                        '</div>' +
+
+                        '</div>' +
+                        '</div>' +
+
+                        '<div class="coment-area">' +
+
+                        '<ul class="we-comet">' +
+
+                        '<li class="post-comment">' +
+                        '<div style="width:100%" class="post-comt-box">' +
+
+                        '<form class="comment-form" data-post-id="' + post.id + '">' +
+                        '<input name="PostId" value="' + post.id + '" type="hidden" />' +
+
+                        '<textarea name="Comment" placeholder="Post your comment"></textarea>' +
+
+                        '<div id="' + post.id + '" class="add-smiles">' +
+                        '<span class="em em-expressionless" title="add icon"></span>' +
+                        '</div>' +
+
+                        '<div id="' + post.id + '" class="smiles-bunch">' +
+                        '<i class="em em---1"></i>' +
+                        '<i class="em em-anguished"></i>' +
+                        '<i class="em em-angry"></i>' +
+                        '</div>' +
+
+                        '<div class="add-button">' +
+                        '<button type="button" onclick="submitComment(this)">Gönder</button>' +
+                        '</div>' +
+
+                        '</form>' +
+                        '</div>' +
+                        '</li>' +
+                        '</ul>' +
+                        '</div>' +
+                        '</div>';
+                    postContainer.append(postHtml);
+
+                    // Bu gönderi için yorumları görüntülemek için fonksiyonu çağır
+                    renderComments(postContainer, post.id);
+
+                    // Gönderi konteynırını ana konteynıra ekle
+                    $("#postsContainer").append(postContainer);
+                },
+                error: function (xhr, status, error) {
+                    console.error("AJAX hatası:", error);
+                }
+            });
+
+
+
+
+        });
+    }
+
+
+
+
+    function renderComments(postContainer, postId) {
+        // Belirli bir gönderi için yorumları almak için AJAX çağrısını yap
+        $.ajax({
+            type: "GET",
+            url: "/Command/GetCommands?postId=" + postId,
+            success: function (comments) {
+                // Sayfada yorumları görüntülemek için bir fonksiyonu çağır
+                console.log(comments);
+                renderCommentsHtml(postContainer, postId, comments);
+            },
+            error: function (error) {
+                console.log("Yorumlar alınırken hata oluştu");
+            }
+        });
+    }
+
+    function renderCommentsHtml(postContainer, postId, comments) {
+        // Check if the comments container already exists
+        var commentsContainer = postContainer.find('.coment-area ul.we-comet');
+
+        if (commentsContainer.length === 0) {
+            // If it doesn't exist, create a new one
+            commentsContainer = $('<ul class="we-comet"></ul>');
+            postContainer.find('.coment-area').append(commentsContainer);
+            console.log('Created new comments container:', commentsContainer);
+        }
+
+        comments.forEach(function (comment) {
+            // Check if the comment with the same ID already exists
+            const existingComment = commentsContainer.find(`li[data-comment-id="${comment.id}"]`);
+            if (existingComment.length === 0) {
+                // Yorum HTML'ini oluştur
+                var commentHtml = '<li data-comment-id="' + comment.id + '">' +
+                    '<div class="comet-avatar">' +
+                    '<img style="border-radius:50%;width:75px;height:55px" src="/PP/' + comment.userImg + '" alt="">' +
+                    '</div>' +
+                    '<div class="we-comment ">' +
+
+                    '<div class="coment-head">' +
+                    '<h5><a href="~/Account/GetProfileFriend/' + comment.userId + '" title="">' + comment.usernmame + '</a></h5>' +
+                    '<span>' + comment.created_at + '</span>' +
+                    '<button class="we-reply openButton" data-target="' + comment.id + '" title="Yanıtla"><i class="fa fa-reply"></i></button>' +
+
+                    // '<button class="we-reply yorumbuton" data-target="' + comment.id +  '" title="Yanıtla"><i class="fa fa-sort-desc" aria-hidden="true"></i></button>' +
+                    '</div>' +
+
+                    '<p>' + comment.comment + '</p>' +
+                    '<br />' +
+
+                    '<div class="post-comt-box" id="' + comment.id + '" style="display:none">' +
+                    '<div class="closeButton" data-target="' + comment.id + '">&times;</div>' +
+
+                    // '<form class="comment-form-child" data-comment-id="' + comment.id + '">' +
+                    // '<input name="MainYorumId" value="' + comment.id + '" type="hidden" />' +
+                    // '<textarea name="Comment" placeholder="Post your comment"></textarea>' +
+                    // '<div class="add-smiles">' +
+                    // '<span class="em em-expressionless" title="add icon"></span>' +
+                    // '</div>' +
+                    // '<div class="smiles-bunch">' +
+                    // '</div>' +
+                    // '<button style="display:block;background:red;position: relative;float: right;margin-top: -29;" type="button" onclick="submitCommentChild(this)">' +
+                    // 'Gönder' +
+                    // '</button>' +
+                    // '</form>' +
+
+                    '<form class="comment-form-child" data-post-id="' + comment.id + '">' +
+                    '<input name="MainYorumId" value="' + comment.id + '" type="hidden" />' +
+
+                    '<textarea name="Comment" placeholder="Post your comment"></textarea>' +
+
+                    '<div id="' + comment.id + '" class="add-smiles">' +
+                    '<span class="em em-expressionless" title="add icon"></span>' +
+                    '</div>' +
+
+                    '<div id="' + comment.id + '" class="smiles-bunch">' +
+                    '<i class="em em---1"></i>' +
+                    '<i class="em em-anguished"></i>' +
+                    '<i class="em em-angry"></i>' +
+                    '</div>' +
+
+                    '<div class="add-button">' +
+                    '<button type="button" onclick="submitCommentChild(this)">Gönder</button>' +
+                    '</div>' +
+
+                    '</form>' +
+
+                    '</div>' +
+
+                    '</div>' +
+                    '</li>';
+
+                // Yorum HTML'ini yorumlar konteynırına ekle
+                commentsContainer.prepend(commentHtml);
+
+
+                document.querySelector('.openButton[data-target="' + comment.id + '"]').addEventListener('click', function () {
+                    document.getElementById(comment.id).style.display = 'block';
+                });
+
+                document.querySelector('.closeButton[data-target="' + comment.id + '"]').addEventListener('click', function () {
+                    document.getElementById(comment.id).style.display = 'none';
+                });
+
+
+                // document.querySelector('.yorumbuton[data-target="' + comment.id + '"]').addEventListener('click', function () {
+
+
+                //     var myDiv = document.querySelector('.altyorumlar');
+                //     if (myDiv.style.display === 'none' || myDiv.style.display === '' || myDiv.id === comment.id) {
+                //         myDiv.style.display = 'block';
+                //     } else {
+                //         myDiv.style.display = 'none';
+                //     }
+                // });
+
+
+
+
+                // Bu yorum için alt yorumları görüntülemek için fonksiyonu çağır
+                renderChildComments(commentsContainer, comment.id);
+            } else {
+                console.log('Comment with the same ID already exists. Not adding again.');
+            }
+        });
+    }
+
+
+
+    function renderChildComments(commentsContainer, commentId) {
+        // Belirli bir yorum için alt yorumları almak için AJAX çağrısını yap
+        $.ajax({
+            type: "GET",
+            url: "/Command/GetCommandsChild?commentId=" + commentId,
+            success: function (childComments) {
+                // Sayfada alt yorumları görüntülemek için bir fonksiyonu çağır
+                console.log(childComments)
+                //yeniAltYorumuEkle(comment);
+                renderChildCommentsHtml(commentsContainer, commentId, childComments);
+            },
+            error: function (error) {
+                console.log("Alt yorumlar alınırken hata oluştu");
+            }
+        });
+    }
+
+    function renderChildCommentsHtml(commentsContainer, commentId, childComments) {
+        // Belirli bir yorumId için yorumlar konteynırını bul
+        var specificCommentContainer = commentsContainer.find('li[data-comment-id="' + commentId + '"]');
+
+        // Belirli bir yorum içinde alt yorumlar için bir konteynır oluştur
+        var childCommentsContainer = $('<ul class="altyorumlar" style="display:block" id="' + commentId + '" > </ul>');
+
+
+
+        // Alt yorumlar konteynırını belirli yorum konteynırına ekle
+        specificCommentContainer.append(childCommentsContainer);
+
+        childComments.forEach(function (childComment) {
+            // Alt yorum HTML'ini oluştur
+            var childCommentHtml = '<li>' +
+                '<div class="comet-avatar">' +
+                '<img style="border-radius:50%;width:75px;height:55px" src="/PP/' + childComment.userImg + '" alt="">' +
+                '</div>' +
+                '<div class="we-comment">' +
+                '<div class="coment-head">' +
+                '<h5><a href="time-line.html" title="">' + childComment.usernmame + '</a></h5>' +
+                '<span>' + childComment.created_at + '</span>' +
+                '</div>' +
+                '<p>' + childComment.comment + '</p>' +
+                '</div>' +
+                '</li>';
+
+            // Alt yorum HTML'ini alt yorumlar konteynırına ekle
+            childCommentsContainer.append(childCommentHtml);
+        });
+    }
+
+
+
+    function submitComment(button) {
+        var form = $(button).closest('.comment-form');
+        var formData = form.serialize();
+
+
+
+        $.ajax({
+            type: "POST",
+            url: "/Command/AddCommand",
+            data: formData,
+            success: function (response) {
+                alertify.success("Yorumunuz başarıyla kaydedildi.");
+                //console.log('ne geldi bakalım', response);
+
+                const postContainer = $(".central-meta.item").filter(function () {
+                    return $(this).find('.comment-form').data('post-id') === response.postId;
+                });
+                //console.log('post container', postContainer);
+                var deger = postContainer.find(".comment ins").text();
+                //console.log('text değeri:', deger);
+                //console.log('Değişken Türü:' + typeof deger);
+
+                var commentCountInt = parseInt(deger, 10);
+                commentCountInt++;
+                postContainer.find(".comment ins").text(commentCountInt); // Doğru atama burada yapılıyor
+                //console.log('değişmiş mi:', commentCountInt);
+
+                var postId = form.data('post-id');
+
+                yeniYorumuEkle(postId, response); // response içeriği yeni yorumun detaylarını içeriyorsa
+
+                form.find('textarea[name="Comment"]').val('');
+            },
+            error: function (error) {
+                alertify.error("Yorumunuz kaydedilirken bir sorun oluştu.");
+            }
+        });
+    }
+
+    function yeniYorumuEkle(postId, comment) {
+        //console.log('Trying to add a new comment:', postId, comment);
+
+        const postContainer = $(".central-meta.item").filter(function () {
+            return $(this).find('.comment-form').data('post-id') === postId;
+        });
+
+        //console.log('Post container:', postContainer);
+
+        if (postContainer.length > 0) {
+            renderCommentsHtml(postContainer, postId, [comment]); // Use renderCommentsHtml to ensure consistent
+            console.log('Comment added successfully.');
+        } else {
+            console.log('Post container not found.');
+        }
+    }
+
+
+
+    function submitCommentChild(button) {
+        var form = $(button).closest('.comment-form-child');
+        var formData = form.serialize();
+        console.log('ne geldi bakalım', form);
+
+        $.ajax({
+            type: "POST",
+            url: "/Command/AddCommandCommands",
+            data: formData,
+            success: function (response) {
+                //console.log('ne geldi bakalım', response);
+
+                var commentId = form.data('comment-id');
+
+                const postContainer = $(".central-meta.item").filter(function () {
+                    return $(this).find('.comment-form').data('post-id') === response.postId;
+                });
+                //console.log('post container', postContainer);
+                var deger = postContainer.find(".comment ins").text();
+                var commentCountInt = parseInt(deger, 10);
+                commentCountInt++;
+
+                postContainer.find(".comment ins").text(commentCountInt);
+
+                alertify.success(" Yorumunuz başarıyla kaydedildi.");
+                altyorumeklehadiartık(response, commentId);  /// response içeriği yeni yorumun detaylarını içeriyorsa
+
+                form.find('textarea[name="Comment"]').val('');
+            },
+            error: function (error) {
+                alertify.error("Yorumunuz kaydedilirken bir sorun oluştu.");
+                console.log(formData);
+                console.log(error);
+            }
+        });
+    }
+
+    function altyorumeklehadiartık(comment, mainYorumId) {
+        console.log('ne geldi bakalım', mainYorumId, comment);
+
+        const postContainer = $(".central-meta.item").filter(function () {
+            return $(this).find('.comment-form-child').data('comment-id') === mainYorumId;
+        });
+
+        // const commentContainer = postContainer.filter(function () {
+        //     return $(this).find('.comment-form-child').data('comment-id') === mainYorumId;
+        // });
+
+
+
+        console.log('Post container:', postContainer);
+        //console.log('Post container:', commentContainer);
+        //console.log('Comment container:', commentContainer);
+
+        if (postContainer.length > 0) {
+            renderChildCommentsHtml(postContainer, mainYorumId, [comment]); // Use renderCommentsHtml to ensure consistent rendering
+            console.log('Comment added successfully.');
+        } else {
+            console.log('Post container not found.');
+        }
+
+
+    }
+
+
+
+
+
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#publishButton").click(function () {
+            var formData = new FormData($('#postForm')[0]);
+
+            $.ajax({
+                type: 'POST',
+                url: '/Post/AddPost', // Adjust the URL based on your project structure
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (post) {
+
+
+
+                    var postContainer = $('<div class="central-meta item"></div>');
+
+                    // Gönderiyi HTML olarak oluştur
+                    var postHtml = '<div class="user-post">' +
+                        '<div class="friend-info">' +
+                        '<figure>' +
+                        '<img style="border-radius:50%;width:75px;height:50px" src="/PP/' + post.pp + '" alt="">' +
+                        '</figure>' +
+                        '<div class="friend-name">' +
+                        '<ins><a href="time-line.html" title="">' + post.userName + '</a></ins>' +
+                        '<span>' + post.created_at + '</span>' +
+                        '</div>' +
+                        '<div class="post-meta">' +
+                        '<img  src="/PostImg/' + post.imageUrl + '" alt="">' +
+                        '<div class="we-video-info">' +
+                        '<ul>' +
+                        '<li>' +
+                        '<span class="views" data-toggle="tooltip" title="Görüntüleme">' +
+                        '<i class="fa fa-eye"></i>' +
+                        '<ins>' + post.countSeen + '</ins>' +
+                        '</span>' +
+                        '</li>' +
+                        '<li>' +
+                        '<span class="comment" data-toggle="tooltip" title="Yorumlar">' +
+                        '<i class="fa fa-comments"></i>' +
+                        '<ins>' + post.countComment + '</ins>' +
+                        '</span>' +
+                        '</li>' +
+                        '<li>' +
+                        '<span id="span' + post.id + '" class="like"  onclick="begenmeIslemi(' + post.id + ')" data-toggle="tooltip" title="Beğeni">' +
+                        '<i class="ti-heart"></i>' +
+                        '<ins>' + post.countLike + '</ins>' +
+                        '</span>' +
+                        '</li>' +
+                        // '<li>' +
+                        // '<span class="dislike" data-toggle="tooltip" title="Beğenmeme">' +
+                        // '<i class="ti-heart-broken"></i>' +
+                        // '<ins>' + post.countDislike + '</ins>' +
+                        // '</span>' +
+                        // '</li>' +
+                        '<li class="social-media">' +
+                        '<div class="menu">' +
+                        '<div class="btn trigger"><i class="fa fa-share-alt"></i></div>' +
+                        '<div class="rotater">' +
+                        '<div class="btn btn-icon"><a href="#" title=""><i class="fa fa-html5"></i></a></div>' +
+                        '</div>' +
+                        // ... Diğer sosyal medya simgelerinizi ekleyin ...
+                        '</div>' +
+                        '</li>' +
+                        '</ul>' +
+                        '</div>' +
+                        '<div class="description">' +
+                        '<span>' + post.description + '</span>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="coment-area">' +
+                        '<ul class="we-comet"></ul>' +
+                        '</div>' +
+                        '</div>' +
+                        // Add the comment form below the post
+                        '<form class="comment-form" data-post-id="' + post.id + '">' +
+                        '<input name="PostId" value="' + post.id + '" type="hidden" />' +
+                        '<textarea name="Comment" placeholder="Post your comment"></textarea>' +
+                        '<div class="add-smiles">' +
+                        '<span class="em em-expressionless" title="add icon"></span>' +
+                        '</div>' +
+                        '<div class="smiles-bunch">' +
+                        '</div>' +
+                        '<button style="display:block;background:blue;position: relative;float: right;margin-top: -29;" type="button" onclick="submitComment(this)">' +
+                        'Gönder' +
+                        '</button>' +
+                        '</form>' +
+                        '</div>';
+
+                    postContainer.append(postHtml);
+                    $('#postsContainer').prepend(postContainer);
+                    $('#silinecek').val("");
+
+                    alertify.success("Başarıyla Kaydedildi");
+
+                },
+                error: function (error) {
+                    // Handle error, display an alert or show an error message
+                    alert('Error: ' + error.responseText);
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    function begenmeIslemi(postId) {
+        $.ajax({
+            type: "post",
+            url: "/command/postLike/" + postId,
+            success: function (response) {
+                var postElement = $('#span' + postId);
+                var likeCountIns = postElement.find('ins');
+                var heartIcon = postElement.find('i');
+
+                // Önceki beğeni sayısını alın
+                var previousLikeCount = parseInt(likeCountIns.text());
+
+                // Beğeni sayısını güncelleyin
+                likeCountIns.text(response.countLike);
+
+                // Eğer beğeni sayısı arttıysa kalbin rengini kırmızıya çevirin, aksi takdirde siyah yapın
+                if (response.countLike > previousLikeCount) {
+                    heartIcon.css('color', 'red');
+                } else {
+                    heartIcon.css('color', 'black');
+                }
+            },
+            error: function (error) {
+                console.error("Hata:", error);
+            }
+        });
+    }
+
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(".add-smiles").click(function () {
+            var x = $(this).attr("id");
+            console.log(x);
+            if ($(".smiles-bunch#" + x).css("display") === "none") {
+                $(".smiles-bunch#" + x).css("display", "block");
+            } else {
+                $(".smiles-bunch#" + x).css("display", "none");
+            }
+        });
+    });
+
+</script>

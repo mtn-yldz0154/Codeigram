@@ -1,0 +1,51 @@
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\BuisnessLayer.deps.json
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\BuisnessLayer.dll
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\BuisnessLayer.pdb
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\DataAcsessLayer.dll
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\EntityLayer.dll
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\DataAcsessLayer.pdb
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\EntityLayer.pdb
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.csproj.AssemblyReference.cache
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.AssemblyInfoInputs.cache
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.AssemblyInfo.cs
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.csproj.CopyComplete
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.dll
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\refint\BuisnessLayer.dll
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.pdb
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\ref\BuisnessLayer.dll
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\BuisnessLayer.deps.json
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\BuisnessLayer.dll
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\BuisnessLayer.pdb
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\DataAcsessLayer.dll
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\EntityLayer.dll
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\DataAcsessLayer.pdb
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\EntityLayer.pdb
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.csproj.AssemblyReference.cache
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.AssemblyInfoInputs.cache
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.AssemblyInfo.cs
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.csproj.CoreCompileInputs.cache
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.csproj.CopyComplete
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.dll
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\refint\BuisnessLayer.dll
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.pdb
+C:\Users\bilal\Desktop\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\ref\BuisnessLayer.dll
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\BuisnessLayer.deps.json
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\BuisnessLayer.dll
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\BuisnessLayer.pdb
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\DataAcsessLayer.dll
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\EntityLayer.dll
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\DataAcsessLayer.pdb
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\bin\Debug\net7.0\EntityLayer.pdb
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.csproj.AssemblyReference.cache
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.AssemblyInfoInputs.cache
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.AssemblyInfo.cs
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.csproj.CopyComplete
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.dll
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\refint\BuisnessLayer.dll
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\BuisnessLayer.pdb
+C:\Users\Metin Yıldız\OneDrive - klu.edu.tr\Masaüstü\Bitirme Projesi 1.3\Bitirme Projesi 1.2\Bitirme Projesi 1\BuisnessLayer\obj\Debug\net7.0\ref\BuisnessLayer.dll
